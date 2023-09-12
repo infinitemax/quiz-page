@@ -8,6 +8,8 @@ document.getElementById("numOfQuestionsHeading").innerHTML = numberOfQuestions;
 
 console.log(`there are ${numberOfQuestions} questions in this quiz`)
 
+
+// navigation function - hides current question div, shows next/prev one.
 const otherClicked = (direction) => {
     
     document.getElementById("que" + questionState).classList.add("hidden");
@@ -25,6 +27,9 @@ const otherClicked = (direction) => {
     }
 }
 
+
+
+//KEEPING TRACK OF THE ANSWERS
 // initialise result array
 const runningResult = [];
 
@@ -35,7 +40,29 @@ for (let i = 0; i < numberOfQuestions; i++){
 const answer = (value) => {
     runningResult[questionState - 1] = value;
     console.log(runningResult)
+}
 
+
+// SUBMITTING THE QUIZ
+const submitQuiz = () => {
+    document.getElementById("que" + questionState).classList.add("hidden");
+    document.getElementById("resultsDiv").classList.remove("hidden");
+    
+    const result = calculateFinalScore(runningResult);
+
+    document.getElementById("totalSpan").innerHTML = result;
+}
+
+// CALCULATE SCORE
+
+const calculateFinalScore = (resultArray) => {
+    let total = 0;
+    resultArray.forEach(item => {
+        if (item) {
+            total++;
+        }
+    })
+    return total;
 }
 
 

@@ -92,9 +92,14 @@
                 </li>
             </ul>
         </div>
+        <div class="h-48 w-[500px] bg-blue-300 hidden px-10 py-6" id="resultsDiv">
+            <h2>Well done on finishing the quiz!</h2>
+            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
+
+        </div>
         <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden" id="prevButton"
             onclick="otherClicked(-1)">Prev</button>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4">Submit</button>
+        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4" onclick="submitQuiz()">Submit</button>
         <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4" id="nextButton"
             onclick="otherClicked(1)">Next</button>
 
