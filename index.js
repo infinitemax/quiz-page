@@ -49,6 +49,7 @@ const submitQuiz = () => {
     document.getElementById("resultsDiv").classList.remove("hidden");
     
     const result = calculateFinalScore(runningResult);
+    console.log(result)
 
     document.getElementById("totalSpan").innerHTML = result;
 }
@@ -58,7 +59,7 @@ const submitQuiz = () => {
 const calculateFinalScore = (resultArray) => {
     let total = 0;
     resultArray.forEach(item => {
-        if (item) {
+        if (item === "true") {
             total++;
         }
     })
