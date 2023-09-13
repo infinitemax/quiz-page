@@ -18,6 +18,15 @@
 
 
         <h2>Buttons outside the divs</h2>
+        <!-- SUBMIT DIV -->
+        <div class="h-48 w-[500px] bg-blue-300 px-10 py-6 " id="resultsDiv">
+            <h2>Well done on finishing the quiz!</h2>
+            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
+            <button class="border-2 bg-red-300 h-14 w-36 rounded-full bg-red-500 text-white text-3xl" id="retryButton" onclick="location.reload()">Retry</button>
+            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" id="reviewButton">Review</button>
+        </div>
+
+        <!-- QUESTION DIVS -->
         <div class="h-48 w-[500px] bg-red-300 myQuestion px-10 py-6" id="que1">
             <h3>Question One</h3>
             <p>What comes next? 1, 2, 3 ... ?</p>
@@ -92,15 +101,11 @@
                 </li>
             </ul>
         </div>
-        <div class="h-48 w-[500px] bg-blue-300 hidden px-10 py-6" id="resultsDiv">
-            <h2>Well done on finishing the quiz!</h2>
-            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
 
-        </div>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden" id="prevButton"
+        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden navButton" id="prevButton"
             onclick="otherClicked(-1)">Prev</button>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4" onclick="submitQuiz()">Submit</button>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4" id="nextButton"
+        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" onclick="submitQuiz()">Submit</button>
+        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" id="nextButton"
             onclick="otherClicked(1)">Next</button>
 
 
