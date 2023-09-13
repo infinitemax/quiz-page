@@ -16,16 +16,24 @@
         <h2>There are <span id="numOfQuestionsHeading">...</span> questions in this quiz</h2>
 
         <!-- WELCOME SCREEN -->
-        <div class="h-48 w-[500px] bg-teal-300 px-10 py-6" id="welcomeDiv">
+        <div class="h-48 w-[500px] bg-indigo-300 px-10 py-6" id="detailsDiv">
             <h2>Welcome to the wonderful quiz!</h2>
             <p>This will test your knowledge on...</p>
-            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
-                onclick="startButtonPress()">Proceed</button>
-            <a href="https://google.com">
-                <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-red-500 text-green-500 text-3xl">Run
-                    away</button>
-            </a>
+            <label for="nameInput">Enter your name</label><br>
+            <input type="text" name="nameInput" id="nameInput"><br>
+            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" onclick="pressSubmitButton()">Submit</button>
         </div>
+
+        <!-- PRE-START SCREEN -->
+            <div class="h-48 w-[500px] bg-teal-300 px-10 py-6 hidden" id="welcomeDiv">
+                <p>Okay <span class="playerNameSpan">human</span>, let's see if you've got what it takes...</p>
+                <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
+                    onclick="startButtonPress()">Proceed</button>
+                <a href="https://google.com">
+                    <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-red-500 text-green-500 text-3xl">Run
+                        away</button>
+                </a>
+            </div>
 
 
         <!-- QUESTION DIVS -->
@@ -123,9 +131,9 @@
                 onclick="otherClicked(1)">Next</button>
         </div>
 
-        <!-- SUBMIT DIV -->
+        <!-- RESULTS DIV -->
         <div class="h-48 w-[500px] bg-blue-300 px-10 py-6 hidden" id="resultsDiv">
-            <h2>Well done on finishing the quiz!</h2>
+            <h2>Well <span class="playerNameSpan">human</span>, you have finished the quiz</h2>
             <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
             <button class="border-2 bg-red-300 h-14 w-36 rounded-full bg-red-500 text-white text-3xl" id="retryButton"
                 onclick="location.reload()">Retry</button>

@@ -8,17 +8,33 @@ document.getElementById("numOfQuestionsHeading").innerHTML = numberOfQuestions;
 
 console.log(`there are ${numberOfQuestions} questions in this quiz`);
 
+let playerName = "";
+
+// TAKING NAME INPUT
+const pressSubmitButton = (playerName) => {
+    // grab name
+    playerName = document.getElementById("nameInput").value;
+    console.log(playerName)
+
+    // hide first screen, reveal second screen
+    document.getElementById("detailsDiv").classList.add("hidden");
+    document.getElementById("welcomeDiv").classList.remove("hidden");
+
+    // add player's name to all relevant places, leave "human" if nothing is entered.
+    if (playerName != ""){
+        const nameSpans = document.querySelectorAll(".playerNameSpan");
+        nameSpans.forEach(nameSpan => {
+            nameSpan.innerHTML = playerName;
+        })
+    }
+} 
+
 
 // PRESSING THE START BUTTON
 const startButtonPress = () => {
     document.getElementById("welcomeDiv").classList.add("hidden");
     document.getElementById("questionSet").classList.remove("hidden");
 }
-
-
-
-// PRESSING THE RUN AWAY BUTTON
-
 
 // navigation function - hides current question div, shows next/prev one.
 const otherClicked = (direction) => {
@@ -56,8 +72,6 @@ const answer = (value, id) => {
 const buttons = document.querySelectorAll(".navButton");
 
 // SUBMITTING THE QUIZ
-
-
 
 const submitQuiz = () => {
     document.getElementById("que" + questionState).classList.add("hidden");
