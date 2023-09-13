@@ -11,29 +11,39 @@
 </head>
 
 <body>
-    <div>
-        <h1>The wonderful quiz</h1>
-        <h2>There are <span id="numOfQuestionsHeading">...</span> questions in this quiz</h2>
+    <div class="flex items-center justify-center flex-col h-screen w-screen bg-gray-300">
+        <div class="my-4 text-2xl font-bold">
+            <h1>The wonderful quiz</h1>
+            <h2>There are <span id="numOfQuestionsHeading">...</span> questions in this quiz</h2>
+        </div>
 
         <!-- WELCOME SCREEN -->
-        <div class="h-48 w-[500px] bg-indigo-300 px-10 py-6" id="detailsDiv">
+        <div class="h-48 w-96 bg-indigo-300 px-10 py-4 pb-2 rounded-md font-semibold" id="detailsDiv">
             <h2>Welcome to the wonderful quiz!</h2>
-            <p>This will test your knowledge on...</p>
-            <label for="nameInput">Enter your name</label><br>
-            <input type="text" name="nameInput" id="nameInput"><br>
-            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" onclick="pressSubmitButton()">Submit</button>
+            <p class="my-2">This will test your knowledge on...</p>
+            <input class="rounded-md focus:ring ring-blue-500 focus:outline-0" type="text" name="nameInput"
+                id="nameInput" placeholder=" Enter your name"><br>
+            <button
+                class="border-2 focus:ring text-white h-10 w-4/12 font-sans rounded-lg bg-cyan-800 text-xl mt-4 font-medium"
+                onclick="pressSubmitButton()">Submit</button>
         </div>
 
         <!-- PRE-START SCREEN -->
-            <div class="h-48 w-[500px] bg-teal-300 px-10 py-6 hidden" id="welcomeDiv">
-                <p>Okay <span class="playerNameSpan">human</span>, let's see if you've got what it takes...</p>
-                <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
-                    onclick="startButtonPress()">Proceed</button>
-                <a href="https://google.com">
-                    <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-red-500 text-green-500 text-3xl">Run
-                        away</button>
+        <div class="h-48 w-96 bg-cyan-800 px-10 py-6 hidden rounded-md" id="welcomeDiv">
+            <p class="text-white">Okay <span class="playerNameSpan">human</span>, let's see if you've got what it takes...</p>
+            <div class="grid grid-cols-2 gap-2 mt-6">
+                <button
+                    class="focus:ring focus:ring-2 ring-white border-2 bg-green-300 h-10 rounded-lg bg-green-500 text-white  text-xl"
+                    onclick="startButtonPress()">Proceed
+                </button>
+                <a href="https://google.com" target="_blank"
+                    class="focus:ring focus:ring-2 ring-white flex justify-center border-2 bg-green-300 h-10 rounded-lg bg-red-500 text-white text-xl gap-0.5">
+                    <button class="">
+                        Run&nbsp;away
+                    </button>
                 </a>
             </div>
+        </div>
 
 
         <!-- QUESTION DIVS -->
