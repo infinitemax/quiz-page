@@ -1,29 +1,42 @@
 let questionState = 1;
 
-let numberOfQuestions = document.querySelectorAll(".myQuestion").length;
+let questions = document.querySelectorAll(".myQuestion");
+let numberOfQuestions = questions.length;
 
 // update heading to show number of questions
 document.getElementById("numOfQuestionsHeading").innerHTML = numberOfQuestions;
 
 console.log(`there are ${numberOfQuestions} questions in this quiz`);
 
+
+// PRESSING THE START BUTTON
+const startButtonPress = () => {
+    document.getElementById("welcomeDiv").classList.add("hidden");
+    document.getElementById("questionSet").classList.remove("hidden");
+}
+
+
+
+// PRESSING THE RUN AWAY BUTTON
+
+
 // navigation function - hides current question div, shows next/prev one.
 const otherClicked = (direction) => {
-  document.getElementById("que" + questionState).classList.add("hidden");
-  document
-    .getElementById("que" + (questionState + direction))
-    .classList.remove("hidden");
-  questionState = questionState + direction;
-  if (questionState > 1) {
-    document.getElementById("prevButton").classList.remove("hidden");
-  } else {
-    document.getElementById("prevButton").classList.add("hidden");
-  }
-  if (questionState === numberOfQuestions) {
-    document.getElementById("nextButton").classList.add("hidden");
-  } else {
-    document.getElementById("nextButton").classList.remove("hidden");
-  }
+    document.getElementById("que" + questionState).classList.add("hidden");
+    document
+        .getElementById("que" + (questionState + direction))
+        .classList.remove("hidden");
+    questionState = questionState + direction;
+    if (questionState > 1) {
+        document.getElementById("prevButton").classList.remove("hidden");
+    } else {
+        document.getElementById("prevButton").classList.add("hidden");
+    }
+    if (questionState === numberOfQuestions) {
+        document.getElementById("nextButton").classList.add("hidden");
+    } else {
+        document.getElementById("nextButton").classList.remove("hidden");
+    }
 };
 
 //KEEPING TRACK OF THE ANSWERS
@@ -31,50 +44,69 @@ const otherClicked = (direction) => {
 const runningResult = [];
 
 for (let i = 0; i < numberOfQuestions; i++) {
-  runningResult.push(null);
+    runningResult.push(null);
 }
 
-const answer = (value) => {
-  runningResult[questionState - 1] = value;
-  console.log(runningResult);
+const answer = (value, id) => {
+    runningResult[questionState - 1] = value;
+    console.log(runningResult);
+    console.log(id);
 };
 
 const buttons = document.querySelectorAll(".navButton");
-
 
 // SUBMITTING THE QUIZ
 
 let finished = false;
 
 const submitQuiz = () => {
-  document.getElementById("que" + questionState).classList.add("hidden");
-  
-  document.getElementById("resultsDiv").classList.remove("hidden");
-  buttons.forEach(button => {
-    button.classList.add("hidden");
-  })
+    document.getElementById("que" + questionState).classList.add("hidden");
 
-  const result = calculateFinalScore(runningResult);
-  console.log(result);
+    document.getElementById("resultsDiv").classList.remove("hidden");
+    buttons.forEach((button) => {
+        button.classList.add("hidden");
+    });
 
-  document.getElementById("totalSpan").innerHTML = result;
-  finished = true;
+    const result = calculateFinalScore(runningResult);
+    console.log(result);
+
+    document.getElementById("totalSpan").innerHTML = result;
+    finished = true;
 };
 
 // CALCULATE SCORE
 const calculateFinalScore = (resultArray) => {
-  let total = 0;
-  resultArray.forEach((item) => {
-    if (item === "true") {
-      total++;
-    }
-  });
-  return total;
+    let total = 0;
+    resultArray.forEach((item) => {
+        if (item === "true") {
+            total++;
+        }
+    });
+    return total;
 };
 
+// REVIEW BUTTON
 
-//
+const reviewQuiz = () => {
+    // show all questions
+    questions.forEach((question) => {
+        question.classList.remove("hidden");
+    });
 
+    // disable radio buttons
+    const options = document.querySelectorAll(".radioOption");
+    options.forEach((button) => {
+        button.setAttribute("disabled", "");
+    });
+
+    // reveal correct answers
+    const correctAnswers = document.querySelectorAll(".correct");
+    correctAnswers.forEach((answer) => {
+        answer.innerHTML += "       <-- the correct answer";
+    });
+
+    document.getElementById("reviewButton").classList.add("hidden");
+};
 
 //#region previous attempts
 

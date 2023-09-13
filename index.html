@@ -15,100 +15,121 @@
         <h1>The wonderful quiz</h1>
         <h2>There are <span id="numOfQuestionsHeading">...</span> questions in this quiz</h2>
 
-
-
-        <h2>Buttons outside the divs</h2>
-        <!-- SUBMIT DIV -->
-        <div class="h-48 w-[500px] bg-blue-300 px-10 py-6 " id="resultsDiv">
-            <h2>Well done on finishing the quiz!</h2>
-            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
-            <button class="border-2 bg-red-300 h-14 w-36 rounded-full bg-red-500 text-white text-3xl" id="retryButton" onclick="location.reload()">Retry</button>
-            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" id="reviewButton">Review</button>
+        <!-- WELCOME SCREEN -->
+        <div class="h-48 w-[500px] bg-teal-300 px-10 py-6" id="welcomeDiv">
+            <h2>Welcome to the wonderful quiz!</h2>
+            <p>This will test your knowledge on...</p>
+            <button
+                class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" onclick="startButtonPress()">Proceed</button>
+            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-red-500 text-green-500 text-3xl">Run
+                away</button>
         </div>
+
 
         <!-- QUESTION DIVS -->
-        <div class="h-48 w-[500px] bg-red-300 myQuestion px-10 py-6" id="que1">
-            <h3>Question One</h3>
-            <p>What comes next? 1, 2, 3 ... ?</p>
-            <ul>
-                <li>
-                    <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-1">1</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-2" name="question1" value="true"
-                    onclick="answer(this.value)">
-                    <label for="q1-2">4</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-3" name="question1" value="false"
-                    onclick="answer(this.value)">
-                    <label for="q1-2">90,000</label>
-                </li>
-            </ul>
-        </div>
-        <div class="h-48 w-[500px] bg-green-300 hidden myQuestion px-10 py-6" id="que2">
-            <h3>Question Two</h3>
-            <p>What comes next? 4, 5, 6 ... ?</p>
-            <ul>
-                <li>
-                    <input type="radio" id="q1-1" name="question1" value="true" onclick="answer(this.value)">
-                    <label for="q1-1">7</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-2" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-2">2</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-3" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-2">Cat</label>
-                </li>
-            </ul>
-        </div>
-        <div class="h-48 w-[500px] bg-yellow-300 hidden myQuestion  px-10 py-6" id="que3">
-            <h3>Question Three</h3>
-            <p>What comes next? 7, 8, 9 ... ?</p>
-            <ul>
-                <li>
-                    <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-1">100</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-2" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-2">1</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-3" name="question1" value="true" onclick="answer(this.value)">
-                    <label for="q1-2">10</label>
-                </li>
-            </ul>
-        </div>
-        <div class="h-48 w-[500px] bg-teal-300 hidden myQuestion  px-10 py-6" id="que4">
-            <h3>Question Four</h3>
-            <p>What comes next? 01, 10, 11 ... ?</p>
-            <ul>
-                <li>
-                    <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-1">111</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-2" name="question1" value="false" onclick="answer(this.value)">
-                    <label for="q1-2">101</label>
-                </li>
-                <li>
-                    <input type="radio" id="q1-3" name="question1" value="true" onclick="answer(this.value)">
-                    <label for="q1-2">100</label>
-                </li>
-            </ul>
-        </div>
-
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden navButton" id="prevButton"
-            onclick="otherClicked(-1)">Prev</button>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" onclick="submitQuiz()">Submit</button>
-        <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" id="nextButton"
+        <div class="hidden" id="questionSet">
+            <div class="h-48 w-[500px] bg-red-300 myQuestion px-10 py-6" id="que1">
+                <h3>Question One</h3>
+                <p>What comes next? 1, 2, 3 ... ?</p>
+                <ul>
+                    <li>
+                        <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-1" class="incorrect">1</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-2" name="question1" value="true" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="correct">4</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-3" name="question1" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="incorrect">90,000</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="h-48 w-[500px] bg-green-300 hidden myQuestion px-10 py-6" id="que2">
+                <h3>Question Two</h3>
+                <p>What comes next? 4, 5, 6 ... ?</p>
+                <ul>
+                    <li>
+                        <input type="radio" id="q1-1" name="question2" value="true" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-1" class="correct">7</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-2" name="question2" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="incorrect">2</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-3" name="question2" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="incorrect">Cat</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="h-48 w-[500px] bg-yellow-300 hidden myQuestion  px-10 py-6" id="que3">
+                <h3>Question Three</h3>
+                <p>What comes next? 7, 8, 9 ... ?</p>
+                <ul>
+                    <li>
+                        <input type="radio" id="q1-1" name="question3" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-1" class="incorrect">100</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-2" name="question3" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="incorrect">1</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-3" class="correct" name="question3" value="true"
+                            onclick="answer(this.value)" class="radioOption">
+                        <label for="q1-2" class="correct">10</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="h-48 w-[500px] bg-teal-300 hidden myQuestion  px-10 py-6" id="que4">
+                <h3>Question Four</h3>
+                <p>What comes next? 01, 10, 11 ... ?</p>
+                <ul>
+                    <li>
+                        <input type="radio" id="q1-1" name="question4" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-1" class="incorrect">111</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-2" name="question4" value="false" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="incorrect">101</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-3" name="question4" value="true" onclick="answer(this.value)"
+                            class="radioOption">
+                        <label for="q1-2" class="correct">100</label>
+                    </li>
+                </ul>
+            </div>
+            
+            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden navButton"
+            id="prevButton" onclick="otherClicked(-1)">Prev</button>
+            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton"
+            onclick="submitQuiz()">Submit</button>
+            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" id="nextButton"
             onclick="otherClicked(1)">Next</button>
-
-
+        </div>
+            
+        <!-- SUBMIT DIV -->
+        <div class="h-48 w-[500px] bg-blue-300 px-10 py-6 hidden" id="resultsDiv">
+            <h2>Well done on finishing the quiz!</h2>
+            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
+            <button class="border-2 bg-red-300 h-14 w-36 rounded-full bg-red-500 text-white text-3xl" id="retryButton"
+                onclick="location.reload()">Retry</button>
+            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
+                id="reviewButton" onclick="reviewQuiz()">Review</button>
+        </div>
 
 
         <!--#region buttons in divs  -->
