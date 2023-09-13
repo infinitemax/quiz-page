@@ -8,33 +8,46 @@ document.getElementById("numOfQuestionsHeading").innerHTML = numberOfQuestions;
 
 console.log(`there are ${numberOfQuestions} questions in this quiz`);
 
-let playerName = "";
+
+// adjust margin based on window size - trying but failing so far!
+
+let windowHeight = window.innerHeight;
+if (windowHeight > 700) {
+    document.querySelector("body").classList.add("pb-28")
+}
+
+const resizeFunction = () => {
+    
+    console.log(windowHeight);
+};
 
 // TAKING NAME INPUT
+
+let playerName = "";
+
 const pressSubmitButton = (playerName) => {
     // grab name
     playerName = document.getElementById("nameInput").value;
-    console.log(playerName)
+    console.log(playerName);
 
     // hide first screen, reveal second screen
     document.getElementById("detailsDiv").classList.add("hidden");
     document.getElementById("welcomeDiv").classList.remove("hidden");
 
     // add player's name to all relevant places, leave "human" if nothing is entered.
-    if (playerName != ""){
+    if (playerName != "") {
         const nameSpans = document.querySelectorAll(".playerNameSpan");
-        nameSpans.forEach(nameSpan => {
+        nameSpans.forEach((nameSpan) => {
             nameSpan.innerHTML = playerName;
-        })
+        });
     }
-} 
-
+};
 
 // PRESSING THE START BUTTON
 const startButtonPress = () => {
     document.getElementById("welcomeDiv").classList.add("hidden");
     document.getElementById("questionSet").classList.remove("hidden");
-}
+};
 
 // navigation function - hides current question div, shows next/prev one.
 const otherClicked = (direction) => {
@@ -85,7 +98,6 @@ const submitQuiz = () => {
     console.log(result);
 
     document.getElementById("totalSpan").innerHTML = result;
-
 };
 
 // CALCULATE SCORE
@@ -116,7 +128,8 @@ const reviewQuiz = () => {
     // reveal correct answers
     const correctAnswers = document.querySelectorAll(".correct");
     correctAnswers.forEach((answer) => {
-        answer.innerHTML += "       <-- the correct answer";
+        answer.innerHTML += "       <--";
+        answer.classList.add("text-green-300");
     });
 
     document.getElementById("reviewButton").classList.add("hidden");
@@ -124,10 +137,13 @@ const reviewQuiz = () => {
     // change styles so review divs aren't so big
     const allContentDivs = document.querySelectorAll(".contentDiv");
 
+    // centre the retry button
+    document.getElementById("retryButton").classList.add("col-span-2");
+
     // I'M HERE - CHANGING THE HEIGHT OF DIVS ON REVIEW!
 
     allContentDivs.forEach((question) => {
-        question.classList.remove("h-[400px]", "md:h-[500px]");
+        question.classList.remove("h-[500px]");
     });
 };
 
