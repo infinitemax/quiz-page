@@ -57,7 +57,7 @@ const buttons = document.querySelectorAll(".navButton");
 
 // SUBMITTING THE QUIZ
 
-let finished = false;
+
 
 const submitQuiz = () => {
     document.getElementById("que" + questionState).classList.add("hidden");
@@ -71,7 +71,7 @@ const submitQuiz = () => {
     console.log(result);
 
     document.getElementById("totalSpan").innerHTML = result;
-    finished = true;
+
 };
 
 // CALCULATE SCORE
