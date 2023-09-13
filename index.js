@@ -120,6 +120,15 @@ const reviewQuiz = () => {
     });
 
     document.getElementById("reviewButton").classList.add("hidden");
+
+    // change styles so review divs aren't so big
+    const allContentDivs = document.querySelectorAll(".contentDiv");
+
+    // I'M HERE - CHANGING THE HEIGHT OF DIVS ON REVIEW!
+
+    allContentDivs.forEach((question) => {
+        question.classList.remove("h-[400px]", "md:h-[500px]");
+    });
 };
 
 //#region previous attempts
