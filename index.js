@@ -17,7 +17,6 @@ if (windowHeight > 700) {
 }
 
 const resizeFunction = () => {
-    
     console.log(windowHeight);
 };
 
@@ -84,7 +83,7 @@ for (let i = 0; i < numberOfQuestions; i++) {
 
 const answer = (value, id) => {
     runningResult[questionState - 1] = value;
-    console.log(runningResult);
+    console.log("runningResult = " + runningResult);
     console.log(id);
 };
 
@@ -101,7 +100,7 @@ const submitQuiz = () => {
     });
 
     const result = calculateFinalScore(runningResult);
-    console.log(result);
+    console.log("result is " + result);
 
     document.getElementById("totalSpan").innerHTML = result;
 };
@@ -138,6 +137,7 @@ const reviewQuiz = () => {
         answer.classList.add("text-green-300");
     });
 
+    // hide review button
     document.getElementById("reviewButton").classList.add("hidden");
 
     // change styles so review divs aren't so big
@@ -146,11 +146,25 @@ const reviewQuiz = () => {
     // centre the retry button
     document.getElementById("retryButton").classList.add("col-span-2");
 
-    // I'M HERE - CHANGING THE HEIGHT OF DIVS ON REVIEW!
+    // change the height of the question divs
 
     allContentDivs.forEach((question) => {
         question.classList.remove("h-[500px]");
     });
+
+    // add ticks and crosses
+
+    const ticks = document.querySelectorAll(".tickMark");
+    const crosses = document.querySelectorAll(".crossMark");
+
+    runningResult.forEach((result, index) => {
+        console.log("index = " + index);
+        if (result === "true") {
+            ticks[index].classList.remove("hidden");
+        } else {
+            crosses[index].classList.remove("hidden");
+        }
+    })
 };
 
 //#region previous attempts

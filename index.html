@@ -55,7 +55,7 @@
         <!-- QUESTION DIVS -->
         <!-- give the next div class of hidden when styling is complete -->
         <div class="hidden" id="questionSet">
-            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl myQuestion contentDiv" id="que1">
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl relative myQuestion contentDiv" id="que1">
                 <h3 class="text-3xl md:text-5xl mb-6">Question One</h3>
                 <p class="text-2xl">What is a black hole primarily formed from?</p>
                 <ul class="mt-8 ">
@@ -77,8 +77,14 @@
                         </li>
                     </div>
                 </ul>
+                <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden tickMark">
+                    <img src="images/check-mark.png" alt="">
+                </div>
+                <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden crossMark">
+                    <img src="images/delete.png" alt="">
+                </div>
             </div>
-            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion contentDiv" id="que2">
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden relative myQuestion contentDiv" id="que2">
                 <h3 class="text-3xl md:text-5xl mb-6">Question Two</h3>
                 <p class="text-2xl">What is the name of the boundary surrounding a black hole beyond which nothing can escape, not even light?                </p>
                 <div class="w-[400px]">
@@ -102,8 +108,14 @@
                         </div>
                 </div>
                 </ul>
+                <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden tickMark">
+                    <img src="images/check-mark.png" alt="">
+                </div>
+                <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden crossMark">
+                    <img src="images/delete.png" alt="">
+                </div>
             </div>
-            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion  contentDiv" id="que3">
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden relative myQuestion contentDiv" id="que3">
                 <h3 class="text-3xl md:text-5xl mb-6">Question Three</h3>
                 <p class="text-2xl">What is the name of the phenomenon where two black holes merge to form a single, more massive black hole?
                 </p>
@@ -127,9 +139,15 @@
                             </li>
                         </div>
                     </ul>
+                    <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden tickMark">
+                        <img src="images/check-mark.png" alt="">
+                    </div>
+                    <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden crossMark">
+                        <img src="images/delete.png" alt="">
+                    </div>
                 </div>
             </div>
-            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion contentDiv" id="que4">
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden relative myQuestion contentDiv" id="que4">
                 <h3 class="text-3xl md:text-5xl mb-6">Question Four</h3>
                 <p class="text-2xl">What happens to time near a black hole's event horizon, as described by Einstein's theory of relativity?</p>
                 <div class="w-[400px]">
@@ -152,17 +170,23 @@
                                 </label>
                             </li>
                         </ul>
+                        <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden tickMark">
+                            <img src="images/check-mark.png" alt="">
+                        </div>
+                        <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden crossMark">
+                            <img src="images/delete.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion contentDiv" id="que4">
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden relative myQuestion contentDiv" id="que5">
                 <h3 class="text-3xl md:text-5xl mb-6">Question Five</h3>
                 <p class="text-2xl">What is the term for the process by which a black hole gradually loses mass and energy over time through the emission of Hawking radiation?</p>
                 <div class="w-[400px]">
                     <div class="w-[400px]">
                         <ul class="mt-8 ">
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q5-1" name="question5" value="false" onclick="answer(this.value)"
+                                <input type="radio" id="q5-1" name="question5" value="true" onclick="answer(this.value)"
                                     class="radioOption pointer">
                                 <label for="q5-1" class="correct pointer">Black hole evaporation</label>
                             </li>
@@ -172,12 +196,18 @@
                                 <label for="q5-2" class="incorrect pointer">Black hole absorption</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q5-3" name="question5" value="true" onclick="answer(this.value)"
+                                <input type="radio" id="q5-3" name="question5" value="false" onclick="answer(this.value)"
                                     class="radioOption pointer">
                                 <label for="q5-3" class="incorrect pointer">Black hole expansion
                                 </label>
                             </li>
                         </ul>
+                        <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden tickMark">
+                            <img src="images/check-mark.png" alt="">
+                        </div>
+                        <div class="absolute bottom-[50px] right-[50px] w-[64px] sm:w-[128px] hidden crossMark">
+                            <img src="images/delete.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
