@@ -66,6 +66,12 @@ const otherClicked = (direction) => {
     } else {
         document.getElementById("nextButton").classList.remove("hidden");
     }
+    // DISPLAY SUBMIT BUTTON AT THE LAST QUESTION
+    if (questionState === numberOfQuestions){
+        document.getElementById("submitButton").classList.remove("hidden")
+    } else {
+        document.getElementById("submitButton").classList.add("hidden")
+    }
 };
 
 //KEEPING TRACK OF THE ANSWERS

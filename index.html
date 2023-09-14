@@ -62,18 +62,18 @@
                     <div class="w-[400px]">
                         <li class="py-2 text-2xl">
                             <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)"
-                                class="radioOption">
-                            <label for="q1-1" class="incorrect">Gas and dust</label>
+                                class="radioOption pointer">
+                            <label for="q1-1" class="incorrect pointer">Gas and dust</label>
                         </li>
                         <li class="py-2 text-2xl">
                             <input type="radio" id="q1-2" name="question1" value="true" onclick="answer(this.value)"
-                                class="radioOption">
-                            <label for="q1-2" class="correct">Collapsed massive stars</label>
+                                class="radioOption pointer">
+                            <label for="q1-2" class="correct pointer">Collapsed massive stars</label>
                         </li>
                         <li class="py-2 text-2xl">
                             <input type="radio" id="q1-3" name="question1" value="false" onclick="answer(this.value)"
-                                class="radioOption">
-                            <label for="q1-2" class="incorrect">Neutron stars</label>
+                                class="radioOption pointer">
+                            <label for="q1-3" class="incorrect pointer">Neutron stars</label>
                         </li>
                     </div>
                 </ul>
@@ -85,19 +85,19 @@
                     <ul class="mt-8 ">
                         <div class="w-[400px]">
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-1" name="question2" value="true" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-1" class="correct">Event horizon</label>
+                                <input type="radio" id="q2-1" name="question2" value="true" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-1" class="correct pointer">Event horizon</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-2" name="question2" value="false" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-2" class="incorrect">Singularity</label>
+                                <input type="radio" id="q2-2" name="question2" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-2" class="incorrect pointer">Singularity</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-3" name="question2" value="false" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-2" class="incorrect">Trouble</label>
+                                <input type="radio" id="q2-3" name="question2" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-3" class="incorrect pointer">Trouble</label>
                             </li>
                         </div>
                 </div>
@@ -111,19 +111,19 @@
                     <ul class="mt-8 ">
                         <div class="w-[400px]">
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-1" name="question3" value="false" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-1" class="incorrect">Black hole evaporation</label>
+                                <input type="radio" id="q3-1" name="question3" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q3-1" class="incorrect pointer">Black hole evaporation</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-2" name="question3" value="false" onclick="answer(this.value)"
+                                <input type="radio" id="q3-2" name="question3" value="false" onclick="answer(this.value)"
                                     class="radioOption">
-                                <label for="q1-2" class="incorrect">Black hole accretion</label>
+                                <label for="q3-2" class="incorrect pointer">Black hole accretion</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-3" name="question3" value="true"
+                                <input type="radio" id="q3-3" name="question3" value="true"
                                     onclick="answer(this.value)" class="radioOption">
-                                <label for="q1-2" class="correct">Black hole coalescence</label>
+                                <label for="q3-3" class="correct pointer">Black hole coalescence</label>
                             </li>
                         </div>
                     </ul>
@@ -136,19 +136,19 @@
                     <div class="w-[400px]">
                         <ul class="mt-8 ">
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-1" name="question4" value="false" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-1" class="incorrect">It remains the same</label>
+                                <input type="radio" id="q4-1" name="question4" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-1" class="incorrect pointer">It remains the same</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-2" name="question4" value="false" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-2" class="incorrect">It speeds up</label>
+                                <input type="radio" id="q4-2" name="question4" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-2" class="incorrect pointer">It speeds up</label>
                             </li>
                             <li class="py-2 text-2xl">
-                                <input type="radio" id="q1-3" name="question4" value="true" onclick="answer(this.value)"
-                                    class="radioOption">
-                                <label for="q1-2" class="correct">It slows down
+                                <input type="radio" id="q4-3" name="question4" value="true" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-3" class="correct pointer">It slows down
                                 </label>
                             </li>
                         </ul>
@@ -162,7 +162,7 @@
                         id="prevButton" onclick="otherClicked(-1)">PREV</button>
                 </div>
                 <div class="mx-auto">
-                    <button type="button" class="border-2 border-indigo-300 rounded-2xl bg-indigo-950 p-4 mx-auto text-3xl w-36 navButton"
+                    <button type="button" class="border-2 border-indigo-300 rounded-2xl bg-indigo-950 p-4 mx-auto text-3xl w-36 navButton hidden" id="submitButton"
                         onclick="submitQuiz()">SUBMIT</button>
                 </div>
                 <div class="mx-auto">
