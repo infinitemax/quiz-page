@@ -6,140 +6,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script defer src="index.js"></script>
 </head>
 
-<body>
-    <div>
-        <h1>The wonderful quiz</h1>
-        <h2>There are <span id="numOfQuestionsHeading">...</span> questions in this quiz</h2>
+<body class="bg-gradient-to-br from-stone-950 to-purple-950 min-h-[100vh] text-indigo-100 font-throughout pb-28" onresize="resizeFunction()">
+    <div class="grid grid-col-1 sm:max-w-2xl lg:max-w-4xl mx-auto">
 
         <!-- WELCOME SCREEN -->
-        <div class="h-48 w-[500px] bg-indigo-300 px-10 py-6" id="detailsDiv">
-            <h2>Welcome to the wonderful quiz!</h2>
-            <p>This will test your knowledge on...</p>
-            <label for="nameInput">Enter your name</label><br>
-            <input type="text" name="nameInput" id="nameInput"><br>
-            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl" onclick="pressSubmitButton()">Submit</button>
+        <div class="h-[500px] mt-12 bg-indigo-900 py-6 flex flex-col items-center sm:rounded-2xl"
+            id="detailsDiv">
+            <h1 class="text-4xl lg:text-5xl mb-6 mt-10 text-center">Welcome to the black hole quiz!</h1>
+            <p class="text-2xl text-center mb-6 mx-4 max-w-[600px]">There are <span id="numOfQuestionsHeading">...</span>
+                questions that will test your knowledge on the mysteries of black holes</p>
+            <label for="nameInput" class="text-2xl pb-2 mt-6">Enter your name:</label><br>
+            <input type="text" name="nameInput" id="nameInput" class="rounded-lg text-stone-700 text-center text-2xl md:text-2xl px-2 py-1"><br>
+            <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl"
+                onclick="pressSubmitButton()">Enter</button>
         </div>
 
         <!-- PRE-START SCREEN -->
-            <div class="h-48 w-[500px] bg-teal-300 px-10 py-6 hidden" id="welcomeDiv">
-                <p>Okay <span class="playerNameSpan">human</span>, let's see if you've got what it takes...</p>
-                <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
-                    onclick="startButtonPress()">Proceed</button>
-                <a href="https://google.com">
-                    <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-red-500 text-green-500 text-3xl">Run
-                        away</button>
-                </a>
+        <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden" id="welcomeDiv">
+            <p class="text-4xl text-center mb-6 mx-4 max-w-[700px] mt-20"">Okay <span class="playerNameSpan">human</span>, let's see if you've got what it takes...</p>
+            <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl w-[280px] mt-6"
+                onclick="startButtonPress()">Enter the abyss</button>
+            <a href="https://google.com">
+                <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl w-[280px] mt-6">Run
+                    away</button>
+            </a>
+        </div>
+
+        <!-- RESULTS DIV (comes before questions so that it sits on top when reviewing at the end of the quiz)-->
+        <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden" id="resultsDiv">
+            <h3 class="text-3xl md:text-5xl mb-6 mt-10 text-center">Well <span class="playerNameSpan">human</span>, you have finished the quiz</h3>
+            <p class="text-3xl">You scored a grand total of <span id="totalSpan">...</span> points</p>
+            <div class="grid grid-cols-2 gap-8 mt-16">
+                <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl mx-auto" id="retryButton"
+                    onclick="location.reload()">Retry</button>
+                <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl"
+                    id="reviewButton" onclick="reviewQuiz()">Review</button>
             </div>
+        </div>
 
 
         <!-- QUESTION DIVS -->
+        <!-- give the next div class of hidden when styling is complete -->
         <div class="hidden" id="questionSet">
-            <div class="h-48 w-[500px] bg-red-300 myQuestion px-10 py-6" id="que1">
-                <h3>Question One</h3>
-                <p>What comes next? 1, 2, 3 ... ?</p>
-                <ul>
-                    <li>
-                        <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-1" class="incorrect">1</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-2" name="question1" value="true" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="correct">4</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-3" name="question1" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="incorrect">90,000</label>
-                    </li>
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl myQuestion contentDiv" id="que1">
+                <h3 class="text-3xl md:text-5xl mb-6">Question One</h3>
+                <p class="text-2xl">What is a black hole primarily formed from?</p>
+                <ul class="mt-8 ">
+                    <div class="w-[400px]">
+                        <li class="py-2 text-2xl">
+                            <input type="radio" id="q1-1" name="question1" value="false" onclick="answer(this.value)"
+                                class="radioOption pointer">
+                            <label for="q1-1" class="incorrect pointer">Gas and dust</label>
+                        </li>
+                        <li class="py-2 text-2xl">
+                            <input type="radio" id="q1-2" name="question1" value="true" onclick="answer(this.value)"
+                                class="radioOption pointer">
+                            <label for="q1-2" class="correct pointer">Collapsed massive stars</label>
+                        </li>
+                        <li class="py-2 text-2xl">
+                            <input type="radio" id="q1-3" name="question1" value="false" onclick="answer(this.value)"
+                                class="radioOption pointer">
+                            <label for="q1-3" class="incorrect pointer">Neutron stars</label>
+                        </li>
+                    </div>
                 </ul>
             </div>
-            <div class="h-48 w-[500px] bg-green-300 hidden myQuestion px-10 py-6" id="que2">
-                <h3>Question Two</h3>
-                <p>What comes next? 4, 5, 6 ... ?</p>
-                <ul>
-                    <li>
-                        <input type="radio" id="q1-1" name="question2" value="true" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-1" class="correct">7</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-2" name="question2" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="incorrect">2</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-3" name="question2" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="incorrect">Cat</label>
-                    </li>
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion contentDiv" id="que2">
+                <h3 class="text-3xl md:text-5xl mb-6">Question Two</h3>
+                <p class="text-2xl">What is the name of the boundary surrounding a black hole beyond which nothing can escape, not even light?                </p>
+                <div class="w-[400px]">
+                    <ul class="mt-8 ">
+                        <div class="w-[400px]">
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q2-1" name="question2" value="true" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-1" class="correct pointer">Event horizon</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q2-2" name="question2" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-2" class="incorrect pointer">Singularity</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q2-3" name="question2" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q2-3" class="incorrect pointer">Trouble</label>
+                            </li>
+                        </div>
+                </div>
                 </ul>
             </div>
-            <div class="h-48 w-[500px] bg-yellow-300 hidden myQuestion  px-10 py-6" id="que3">
-                <h3>Question Three</h3>
-                <p>What comes next? 7, 8, 9 ... ?</p>
-                <ul>
-                    <li>
-                        <input type="radio" id="q1-1" name="question3" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-1" class="incorrect">100</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-2" name="question3" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="incorrect">1</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-3" class="correct" name="question3" value="true"
-                            onclick="answer(this.value)" class="radioOption">
-                        <label for="q1-2" class="correct">10</label>
-                    </li>
-                </ul>
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion  contentDiv" id="que3">
+                <h3 class="text-3xl md:text-5xl mb-6">Question Three</h3>
+                <p class="text-2xl">What is the name of the phenomenon where two black holes merge to form a single, more massive black hole?
+                </p>
+                <div class="w-[400px]">
+                    <ul class="mt-8 ">
+                        <div class="w-[400px]">
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q3-1" name="question3" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q3-1" class="incorrect pointer">Black hole evaporation</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q3-2" name="question3" value="false" onclick="answer(this.value)"
+                                    class="radioOption">
+                                <label for="q3-2" class="incorrect pointer">Black hole accretion</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q3-3" name="question3" value="true"
+                                    onclick="answer(this.value)" class="radioOption">
+                                <label for="q3-3" class="correct pointer">Black hole coalescence</label>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
             </div>
-            <div class="h-48 w-[500px] bg-teal-300 hidden myQuestion  px-10 py-6" id="que4">
-                <h3>Question Four</h3>
-                <p>What comes next? 01, 10, 11 ... ?</p>
-                <ul>
-                    <li>
-                        <input type="radio" id="q1-1" name="question4" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-1" class="incorrect">111</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-2" name="question4" value="false" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="incorrect">101</label>
-                    </li>
-                    <li>
-                        <input type="radio" id="q1-3" name="question4" value="true" onclick="answer(this.value)"
-                            class="radioOption">
-                        <label for="q1-2" class="correct">100</label>
-                    </li>
-                </ul>
+            <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden myQuestion contentDiv" id="que4">
+                <h3 class="text-3xl md:text-5xl mb-6">Question Four</h3>
+                <p class="text-2xl">What happens to time near a black hole's event horizon, as described by Einstein's theory of relativity?</p>
+                <div class="w-[400px]">
+                    <div class="w-[400px]">
+                        <ul class="mt-8 ">
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q4-1" name="question4" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-1" class="incorrect pointer">It remains the same</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q4-2" name="question4" value="false" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-2" class="incorrect pointer">It speeds up</label>
+                            </li>
+                            <li class="py-2 text-2xl">
+                                <input type="radio" id="q4-3" name="question4" value="true" onclick="answer(this.value)"
+                                    class="radioOption pointer">
+                                <label for="q4-3" class="correct pointer">It slows down
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 hidden navButton"
-                id="prevButton" onclick="otherClicked(-1)">Prev</button>
-            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton"
-                onclick="submitQuiz()">Submit</button>
-            <button type="button" class="border-2 rounded-full bg-indigo-800 text-white p-4 navButton" id="nextButton"
-                onclick="otherClicked(1)">Next</button>
+            <div class="buttonDiv grid grid-cols-3 justify-between pt-4 sm:pt-4 gap-[10%]">
+                <div class="mx-auto">
+                    <button type="button" class="border-2 border-indigo-300 rounded-2xl bg-indigo-950 p-4 mx-auto text-3xl w-36 navButton hidden"
+                        id="prevButton" onclick="otherClicked(-1)">PREV</button>
+                </div>
+                <div class="mx-auto">
+                    <button type="button" class="border-2 border-indigo-300 rounded-2xl bg-indigo-950 p-4 mx-auto text-3xl w-36 navButton hidden" id="submitButton"
+                        onclick="submitQuiz()">SUBMIT</button>
+                </div>
+                <div class="mx-auto">
+                    <button type="button" class="border-2 border-indigo-300 rounded-2xl bg-indigo-950 p-4 mx-auto text-3xl w-36 navButton"
+                        id="nextButton" onclick="otherClicked(1)">NEXT</button>
+                </div>
+            </div>
         </div>
 
-        <!-- RESULTS DIV -->
-        <div class="h-48 w-[500px] bg-blue-300 px-10 py-6 hidden" id="resultsDiv">
-            <h2>Well <span class="playerNameSpan">human</span>, you have finished the quiz</h2>
-            <p>You scored a grand total of <span id="totalSpan">...</span> points!</p>
-            <button class="border-2 bg-red-300 h-14 w-36 rounded-full bg-red-500 text-white text-3xl" id="retryButton"
-                onclick="location.reload()">Retry</button>
-            <button class="border-2 bg-green-300 h-14 w-36 rounded-full bg-green-500 text-red-500 text-3xl"
-                id="reviewButton" onclick="reviewQuiz()">Review</button>
-        </div>
+
 
 
         <!--#region buttons in divs  -->
