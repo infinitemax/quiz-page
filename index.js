@@ -1,7 +1,44 @@
 let questionState = 1;
-
 let questions = document.querySelectorAll(".myQuestion");
 let numberOfQuestions = questions.length;
+
+const questionBank = [
+    {
+        id: 1,
+        question: "This is the first test question?",
+        answers: [
+            "First test 1",
+            "First test 2",
+            "First test 3"
+        ],
+        correct: "First test 2"
+    },
+    {
+        id: 2,
+        question: "This is the second test question?",
+        answers: [
+            "Second test 1",
+            "Second test 2",
+            "Second test 3"
+        ],
+        correct: "Second test 2"
+    }
+]
+
+// POPULATE QUESTIONS FROM BANK
+
+let numOfQs = questionBank.length;
+let newQuestions = document.querySelectorAll(".testQuestionText")
+
+for (let i = 0; i < numOfQs; i++) {
+    // add questions
+    newQuestions[i].innerHTML = questionBank[i].question;
+    // add answers
+    for (let j = 0; j < 3; j++) {
+        document.querySelector(".testAnswer" + (i + 1) + "-" + (j + 1)).innerHTML = questionBank[i].answers[j]
+    }
+}
+
 
 // update heading to show number of questions
 document.getElementById("numOfQuestionsHeading").innerHTML = numberOfQuestions;
