@@ -103,6 +103,29 @@ const submitQuiz = () => {
     console.log("result is " + result);
 
     document.getElementById("totalSpan").innerHTML = result;
+
+    let feedback = document.getElementById("feedback")
+
+    switch(result) {
+        case 0:
+            feedback.innerHTML = "Just like a black hole - infinitely dense";
+            break;
+        case 1:
+            feedback.innerHTML = "The answers were obviously stuck behind your event horizon";
+            break;
+        case 2:
+            feedback.innerHTML = "Pretty mediocre, it's going to take a while for you to reach critical mass";
+            break;
+        case 3:
+            feedback.innerHTML = "More a squeak than a supernova, but one day you'll get there";
+            break;
+        case 4:
+            feedback.innerHTML = "Cool, you're making gravity waves";
+            break;
+        case 5:
+            feedback.innerHTML = "Wow, super massive intelligence right there!";
+            break;
+    }
 };
 
 // CALCULATE SCORE

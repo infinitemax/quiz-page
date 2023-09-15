@@ -42,7 +42,8 @@
         <!-- RESULTS DIV (comes before questions so that it sits on top when reviewing at the end of the quiz)-->
         <div class="h-[500px] mt-12 bg-indigo-900 px-10 py-6 flex flex-col items-center sm:rounded-2xl hidden" id="resultsDiv">
             <h3 class="text-3xl md:text-5xl mb-6 mt-10 text-center">Well <span class="playerNameSpan">human</span>, you have finished the quiz</h3>
-            <p class="text-3xl">You scored a grand total of <span id="totalSpan">...</span> points</p>
+            <p class="text-3xl text-center">You scored a grand total of <span id="totalSpan">...</span> points</p>
+            <p class="text-2xl mt-10 text-center" id="feedback"></p>
             <div class="grid grid-cols-2 gap-8 mt-16">
                 <button class="border-2 border-indigo-300 h-14 w-36 rounded-2xl bg-indigo-950 text-3xl mx-auto" id="retryButton"
                     onclick="location.reload()">Retry</button>
